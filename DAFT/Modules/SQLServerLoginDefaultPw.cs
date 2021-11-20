@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Specialized;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Xml;
 
 namespace DAFT.Modules
@@ -18,8 +20,13 @@ namespace DAFT.Modules
         {
             try
             {
+                var assembly = Assembly.GetExecutingAssembly();
+                var resourceName = "DefaultCredentials.xml";
+
+                Stream stream = assembly.GetManifestResourceStream(resourceName);
+
                 XmlDocument doc = new XmlDocument();
-                doc.Load(@".\DefaultCredentials.xml");
+                doc.Load(stream);
                 XmlNodeList nodeList = doc.SelectNodes("configuration");
                 XmlNode configuration = nodeList[0];
                 string[] userPass = new string[2];

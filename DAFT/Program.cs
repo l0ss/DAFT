@@ -691,7 +691,7 @@ namespace DAFT
                     case "serverlogin":
                         _SQLServerLogin(i);
                         break;
-                    case "serverdefaultloginpw":
+                    case "serverlogindefaultpw":
                         _SQLServerLoginDefaultPw(i);
                         break;
                     case "serverpasswordhash":
